@@ -1,0 +1,1274 @@
+[index.html](https://github.com/user-attachments/files/25058701/index.html)
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Luis Rodríguez | Infrastructure Project SME</title>
+    <meta name="description" content="Infrastructure Project SME con 15+ años liderando iniciativas de infraestructura IT a nivel global en entornos financieros y empresariales">
+    <!-- Iconos modernos -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            /* Modo Claro (Default) */
+            --primary-color: #1e3a8a; /* Azul Rey */
+            --secondary-color: #2563eb;
+            --accent-color: #65a30d; /* Verde Limón */
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-card: #ffffff;
+            --border-color: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 16px;
+            --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            --gradient-accent: linear-gradient(135deg, #65a30d 0%, #84cc16 100%); /* Verde Limón */
+        }
+
+        .dark-mode {
+            /* Modo Oscuro - Con verde #0FF915 */
+            --primary-color: #0FF915; /* Verde brillante #0FF915 */
+            --secondary-color: #4ade80; /* Verde más suave */
+            --accent-color: #0FF915; /* Mismo verde #0FF915 para acento */
+            --text-primary: #f3f4f6;
+            --text-secondary: #d1d5db;
+            --bg-primary: #111827; /* Fondo principal oscuro */
+            --bg-secondary: #1f2937; /* Fondo secundario */
+            --bg-card: #1f2937; /* Tarjetas */
+            --border-color: #374151; /* Bordes sutiles */
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.4);
+            --gradient-primary: linear-gradient(135deg, #0FF915 0%, #4ade80 100%);
+            --gradient-accent: linear-gradient(135deg, #0FF915 0%, #86efac 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.8rem; margin-bottom: 1rem; }
+        h4 { font-size: 1.3rem; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            display: inline-block;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== BOTONES ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent); /* Verde Limón */
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* ===== TOGGLE MODO OSCURO ===== */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border: none;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(30deg);
+            box-shadow: 0 10px 30px rgba(30, 58, 138, 0.3);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background: rgba(17, 24, 39, 0.95);
+        }
+
+        .header-scrolled {
+            padding: 0.8rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 12rem 0 8rem;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(101, 163, 13, 0.15); /* Verde Limón */
+            bottom: 5px;
+            left: 0;
+            z-index: -1;
+        }
+
+        .dark-mode .highlight::after {
+            background-color: rgba(15, 249, 21, 0.15); /* Verde #0FF915 con opacidad */
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-tagline {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border-left: 4px solid var(--primary-color);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            transition: var(--transition);
+        }
+
+        .hero-tagline:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .badge {
+            background: var(--bg-card);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge i {
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            position: relative;
+            text-align: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .profile-img-container {
+            position: relative;
+            display: inline-block;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition);
+        }
+
+        .profile-img-container:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.03);
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            display: block;
+        }
+
+        .floating-stats {
+            position: absolute;
+            background: var(--bg-card);
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .stat-1 {
+            bottom: 30px;
+            left: -30px;
+            animation-delay: 0s;
+        }
+
+        .stat-2 {
+            top: 40px;
+            right: -20px;
+            animation-delay: 1s;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== STATS SECTION ===== */
+        .stats {
+            padding: 4rem 0;
+            background: var(--bg-primary);
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-card i {
+            font-size: 2.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===== EXPERIENCE SECTION ===== */
+        .experience {
+            background: var(--bg-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), rgba(30, 58, 138, 0.2));
+        }
+
+        .dark-mode .timeline::before {
+            background: linear-gradient(to bottom, var(--primary-color), rgba(15, 249, 21, 0.2));
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 100px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-date {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-card);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            border: 2px solid var(--primary-color);
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .company {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== SKILLS SECTION ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .skill-items {
+            margin-top: 1.5rem;
+        }
+
+        .skill-item {
+            margin-bottom: 1.8rem;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--skill-level);
+            background: var(--gradient-primary);
+            border-radius: 5px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            text-align: center;
+            padding: 8rem 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--primary-color);
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .cta .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-item i {
+            font-size: 2.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-image {
+                order: -1;
+            }
+            
+            .floating-stats {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            h1 { font-size: 2.3rem; }
+            h2 { font-size: 1.8rem; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: var(--shadow);
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .timeline-item {
+                padding-left: 80px;
+            }
+            
+            .timeline-date {
+                width: 50px;
+                height: 50px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== TOGGLE MODO OSCURO ===== -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="ri-sun-line"></i>
+    </button>
+
+    <!-- ===== HEADER ===== -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <a href="#home" class="logo">
+                    JLRG<span class="logo-dot">.</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Inicio</a></li>
+                    <li><a href="#stats">Logros</a></li>
+                    <li><a href="#experience">Experiencia</a></li>
+                    <li><a href="#skills">Habilidades</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#contact" class="btn" style="padding: 0.8rem 1.8rem;">Contáctame</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="section-title">Infrastructure Project SME | Global IT Project & Operations Leader</span>
+                    <h1><span class="highlight">15+ años</span> Liderando Infraestructura IT Global en Entornos <span class="highlight">Financieros y Empresariales</span></h1>
+                    <p class="hero-subtitle">Expertise en Disaster Recovery, gestión de obsolescencia, hardening de seguridad, programas de vulnerabilidad & patching, monitoreo y operaciones de data center.</p>
+                    
+                    <div class="hero-tagline">
+                        <p><strong>Mi expertise:</strong> Ex-líder de Sistemas & Infraestructura + Habilidades de ejecución de proyectos en ITIL, PMP, Agile, y SAFe + Gestión de múltiples prioridades concurrentes</p>
+                    </div>
+                    
+                    <div class="hero-badges">
+                        <div class="badge"><i class="ri-medal-fill"></i> PMP Certified</div>
+                        <div class="badge"><i class="ri-shield-check-fill"></i> ITIL Expert</div>
+                        <div class="badge"><i class="ri-flashlight-fill"></i> SCRUM Master</div>
+                        <div class="badge"><i class="ri-globe-fill"></i> 15+ Países</div>
+                    </div>
+                    
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn">Agendar Llamada <i class="ri-calendar-check-line"></i></a>
+                        <a href="#experience" class="btn btn-outline">Ver Trayectoria</a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="profile-img-container">
+                        <!-- REEMPLAZA ESTA URL CON TU FOTO REAL -->
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="José Luis Rodríguez - Infrastructure Project SME" 
+                             class="profile-img">
+                    </div>
+                    
+                    <div class="floating-stats stat-1">
+                        <div>
+                            <div class="stat-value">15+</div>
+                            <div class="stat-label">Años Experiencia</div>
+                        </div>
+                        <i class="ri-calendar-fill" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+                    </div>
+                    
+                    <div class="floating-stats stat-2">
+                        <i class="ri-projector-fill" style="font-size: 1.8rem; color: var(--accent-color);"></i>
+                        <div>
+                            <div class="stat-value">$510M+</div>
+                            <div class="stat-label">Proyectos Entregados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS SECTION ===== -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <i class="ri-globe-fill"></i>
+                    <h3>15+</h3>
+                    <p>Países de Experiencia</p>
+                </div>
+                <div class="stat-card">
+                    <i class="ri-money-dollar-circle-fill"></i>
+                    <h3>$510M+</h3>
+                    <p>Valor de Proyectos</p>
+                </div>
+                <div class="stat-card">
+                    <i class="ri-team-fill"></i>
+                    <h3>98%</h3>
+                    <p>On-Time Delivery</p>
+                </div>
+                <div class="stat-card">
+                    <i class="ri-star-fill"></i>
+                    <h3>95%</h3>
+                    <p>Satisfacción Cliente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EXPERIENCE SECTION ===== -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <span class="section-title">Trayectoria Profesional</span>
+            <h2>Experiencia Global con Resultados Medibles</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024<br>Actual</div>
+                    <div class="timeline-content">
+                        <h3>Project Manager Divisional IT</h3>
+                        <div class="company"><i class="ri-building-fill"></i> MUFG (México - USA - Japón)</div>
+                        <p>Administro y coordino proyectos IT usando SaFe, Agile Scrum y PMP, garantizando alineación con procedimientos corporativos y comunicación efectiva con stakeholders y alta gerencia.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Gestión de schedule, recursos y presupuestos de manera precisa</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Control de cambios según procedimientos corporativos</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Administración de nuevas iniciativas y seguimiento efectivo</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2019<br>2024</div>
+                    <div class="timeline-content">
+                        <h3>Project Manager IT LATAM</h3>
+                        <div class="company"><i class="ri-building-fill"></i> BBVA</div>
+                        <p>Gestión de proyectos IT en LATAM usando SaFe y PMP, liderando programas de health check de infraestructura, gestión de riesgos y compliance regulatorio.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Programas de obsolescencia, DR readiness y alta disponibilidad</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Gestión proactiva de vulnerabilidades y riesgos operacionales</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Reporte directo a CTO/CIO con insights estratégicos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2021<br>2021</div>
+                    <div class="timeline-content">
+                        <h3>Project Manager IT LATAM</h3>
+                        <div class="company"><i class="ri-building-fill"></i> BLUEYONDER</div>
+                        <p>Responsable de project management en planning/implementación/delivery de proyectos revenue para IT LATAM, usando waterfall, Agile SCRUM, ITIL & PMP.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Experiencia con Mobile, Logistics, ERP (SAP)</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Mejoras de procesos de negocio y tecnológicos</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Optimización de release management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2018<br>2021</div>
+                    <div class="timeline-content">
+                        <h3>Project Manager LATAM</h3>
+                        <div class="company"><i class="ri-building-fill"></i> PEPSICO</div>
+                        <p>Gestión de proyectos de infraestructura IT usando Agile SCRUM, ITIL y PMP, con foco en mejora de procesos y compliance.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Mobile CRM (SAP/Salesforce/Legacy Systems)</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Change & Release Management para infraestructura</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Optimización de Application Services en 11 países LATAM</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2017<br>2018</div>
+                    <div class="timeline-content">
+                        <h3>Service Delivery Manager ITO</h3>
+                        <div class="company"><i class="ri-building-fill"></i> Clientes Corporativos</div>
+                        <p>Oversee de service delivery de alta calidad en cuentas cliente, gestión de SLAs/KPIs, y mejora continua de servicios en entorno ITIL.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Gestión de equipos de service delivery</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> Adherencia a presupuestos y gestión de costos</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Soporte a proyectos IT de Infra & Dev</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2005<br>2016</div>
+                    <div class="timeline-content">
+                        <h3>IT Management & PMO Roles</h3>
+                        <div class="company"><i class="ri-building-fill"></i> Grupo Financiero BANORTE/ACTINVER/CEGEDIM</div>
+                        <p>Posiciones progresivas en gestión IT, PMO de Innovación e Infraestructura, y liderazgo de HelpDesk LATAM con enfoque en excelencia operacional.</p>
+                        <ul style="margin-top: 1rem; list-style: none;">
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> PMO IT Innovation & Infrastructure</li>
+                            <li style="margin-bottom: 0.5rem;"><i class="ri-check-line" style="color: var(--accent-color);"></i> IT Manager & HelpDesk LATAM</li>
+                            <li><i class="ri-check-line" style="color: var(--accent-color);"></i> Transformación digital y compliance regulatorio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <span class="section-title">Expertise Técnico</span>
+            <h2>Habilidades y Certificaciones</h2>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="ri-medal-fill" style="color: var(--primary-color); margin-right: 10px;"></i> Metodologías Certificadas</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>PMP (Project Management Professional)</span>
+                                <span>98%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 98%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>ITIL Foundations & SOA</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 95%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>SCRUM & Agile Methodologies</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 92%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>SAFe Framework</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="ri-tools-fill" style="color: var(--primary-color); margin-right: 10px;"></i> Infraestructura & Herramientas</h3>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>VMware Cloud Foundation & vSphere</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 95%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Microsoft Azure & AWS Cloud</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 90%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>JIRA / ServiceNow / Microsoft Project</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 95%;"></div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span>Disaster Recovery & Security Hardening</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-bar" style="--skill-level: 94%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta">
+        <div class="container">
+            <h2>¿Listo para Transformar su Infraestructura IT?</h2>
+            <p>Agenda una consulta estratégica sin costo para discutir cómo puedo impulsar sus iniciativas tecnológicas con enfoque global y resultados medibles.</p>
+            <a href="#contact" class="btn">Comenzar Conversación <i class="ri-arrow-right-line"></i></a>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <span class="section-title">Conectemos</span>
+            <h2>Contacto Directo</h2>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="ri-mail-fill"></i>
+                    <h3>Email</h3>
+                    <p>jlrodriguezglez@gmail.com</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="ri-phone-fill"></i>
+                    <h3>Teléfono</h3>
+                    <p>+52 55 3262 0819</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="ri-linkedin-fill"></i>
+                    <h3>LinkedIn</h3>
+                    <p>/in/jlrg14</p>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="ri-map-pin-fill"></i>
+                    <h3>Ubicación</h3>
+                    <p>Atizapán, Estado de México</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#home" class="logo" style="color: white; font-size: 2rem;">
+                        JLRG<span class="logo-dot">.</span>
+                    </a>
+                    <p style="margin-top: 1rem; max-width: 300px;">Infrastructure Project SME con 15+ años liderando iniciativas IT globales en entornos financieros y empresariales.</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/jlrg14" target="_blank"><i class="ri-linkedin-fill"></i></a>
+                    <a href="mailto:jlrodriguezglez@gmail.com"><i class="ri-mail-fill"></i></a>
+                    <a href="tel:+525532620819"><i class="ri-phone-fill"></i></a>
+                    <a href="https://joseluisrodriguezgle.wixsite.com/jlrg2021" target="_blank"><i class="ri-global-fill"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2024 José Luis Rodríguez González. Todos los derechos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.8rem;">PMP | ITIL | ITIL SOA | SCRUM Certified Infrastructure Project SME</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== TOGGLE MODO OSCURO =====
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.className = 'ri-moon-line';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.className = 'ri-sun-line';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+        
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.className = 'ri-moon-line';
+        }
+        
+        // ===== MENÚ MÓVIL =====
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu')) {
+                navLinks.classList.remove('active');
+            }
+        });
+        
+        // ===== SCROLL SUAVE =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // ===== ANIMACIÓN TIMELINE ON SCROLL =====
+        const animateTimeline = () => {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    item.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateTimeline);
+        animateTimeline(); // Ejecutar al cargar
+        
+        // ===== ANIMACIÓN SKILL BARS =====
+        const animateSkillBars = () => {
+            const skillBars = document.querySelectorAll('.skill-bar');
+            skillBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    bar.style.setProperty('--skill-level', bar.style.getPropertyValue('--skill-level') || '0%');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateSkillBars);
+        animateSkillBars(); // Ejecutar al cargar
+        
+        // Inicializar todo al cargar
+        document.addEventListener('DOMContentLoaded', () => {
+            // Activar enlace actual en navegación
+            const currentSection = () => {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-links a');
+                
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', currentSection);
+            currentSection(); // Ejecutar al cargar
+        });
+    </script>
+</body>
+</html>
